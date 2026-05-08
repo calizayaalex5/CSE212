@@ -13,7 +13,17 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return []; // replace this return statement with your own
+        //PLAN:
+        // 1 Create an array of doubles to hold the multiples of the number
+        // 2 Loop through the array and fill it with the multiples of the number
+        // 3 Return the array of multiples
+
+        var multiples = new double[length];
+        for (int i = 0; i < length; i++)
+        {
+            multiples[i] = number * (i + 1);
+        }
+        return multiples; 
     }
 
     /// <summary>
@@ -29,5 +39,17 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+        //PLAN:
+        // 1 Find the split point where the tail begins 
+        // 2 Extract the tail elements from the list
+        // 3 Remove the tail elements from the original list
+        // 4 Insert the tail elements at the beginning of the list
+
+        int splitPoint = data.Count - amount;
+        var tail = data.GetRange(splitPoint, amount);
+        data.RemoveRange(splitPoint, amount);
+        data.InsertRange(0, tail);
+        
     }
 }
