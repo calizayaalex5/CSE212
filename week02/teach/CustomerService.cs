@@ -11,18 +11,24 @@ public class CustomerService {
         // Test Cases
 
         // Test 1
-        // Scenario: 
-        // Expected Result: 
+        // Scenario: Can i add a new customer
+        // Expected Result: this should display the customer and the problem
         Console.WriteLine("Test 1");
-
+        var service = new CustomerService(4);
+        service.AddNewCustomer();
+        service.ServeCustomer();
         // Defect(s) Found: 
 
         Console.WriteLine("=================");
 
         // Test 2
-        // Scenario: 
-        // Expected Result: 
+        // Scenario: Find the maximum number of customers that can be added to the queue and then try to add one more customer beyond the maximum
+        // Expected Result:  This should display the maximum number of customers in queue message and not add the extra customer to the queue
         Console.WriteLine("Test 2");
+        service = new CustomerService(2);
+        service.AddNewCustomer();
+        service.AddNewCustomer();
+        service.AddNewCustomer();
 
         // Defect(s) Found: 
 
@@ -67,7 +73,7 @@ public class CustomerService {
     /// </summary>
     private void AddNewCustomer() {
         // Verify there is room in the service queue
-        if (_queue.Count > _maxSize) {
+        if (_queue.Count >= _maxSize) {
             Console.WriteLine("Maximum Number of Customers in Queue.");
             return;
         }
@@ -88,8 +94,8 @@ public class CustomerService {
     /// Dequeue the next customer and display the information.
     /// </summary>
     private void ServeCustomer() {
-        _queue.RemoveAt(0);
         var customer = _queue[0];
+        _queue.RemoveAt(0);
         Console.WriteLine(customer);
     }
 
