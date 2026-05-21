@@ -6,8 +6,10 @@ public class Translator
         englishToGerman.AddWord("House", "Haus");
         englishToGerman.AddWord("Car", "Auto");
         englishToGerman.AddWord("Plane", "Flugzeug");
+        englishToGerman.AddWord("Phone", "Telefon");
         Console.WriteLine(englishToGerman.Translate("Car")); // Auto
         Console.WriteLine(englishToGerman.Translate("Plane")); // Flugzeug
+        Console.WriteLine(englishToGerman.Translate("Phone")); // Telefon
         Console.WriteLine(englishToGerman.Translate("Train")); // ???
     }
 
@@ -24,7 +26,7 @@ public class Translator
     /// <returns>fixed array of divisors</returns>
     public void AddWord(string fromWord, string toWord)
     {
-        // ADD YOUR CODE HERE
+        _words[fromWord] = toWord;
     }
 
     /// <summary>
@@ -35,6 +37,10 @@ public class Translator
     public string Translate(string fromWord)
     {
         // ADD YOUR CODE HERE
-        return "";
+        if (_words.ContainsKey(fromWord))
+        {
+            return _words[fromWord];
+        }
+        return "???";
     }
 }
